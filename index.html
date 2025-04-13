@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span>Какое-то название</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="recipe.html" id="random-recipe-link">Случайный рецепт</a></li>
+                    <li><a href="favorites.html" id="favorites-link">Избранное</a></li>
+                    <li><a href="account.html">Аккаунт</a></li>
+
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Найти рецепт...">
+                <button id="search-btn" aria-label="Поиск рецепта" title="Поиск рецепта"></button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1>Откройте для себя новые рецепты</h1>
+                <p>Найдите идеальный рецепт на основе ваших ингредиентов</p>
+                <div class="ingredients-search">
+                    <input type="text" id="ingredients-input" placeholder="Введите ингредиенты...">
+                    <button id="find-by-ingredients-btn">Найти рецепты</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="recipes-section">
+            <div class="container">
+                <h2 id="recipes-title">Популярные рецепты</h2>
+                <div class="recipes-grid" id="recipes-container">
+                </div>
+            </div>
+        </section>
+
+        <section class="favorites-section hidden" id="favorites-section">
+            <div class="container">
+                <h2>Избранные рецепты</h2>
+                <div class="recipes-grid" id="favorites-container">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Какое-то название</p>
+            <p></p>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>

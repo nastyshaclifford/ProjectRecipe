@@ -1,0 +1,9 @@
+css/style.css
+css/style.css.map
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+
+node_modules/
