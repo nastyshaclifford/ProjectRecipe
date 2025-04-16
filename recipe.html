@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Случайный рецепт 🍳</title>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body class="recipe-page">
+    <header class="recipe-page__header">
+        <button class="recipe-page__back-button" onclick="window.history.back()">✖ Назад</button>
+    </header>
+
+    <main class="recipe-page__main">
+        <h1 class="recipe-page__title">🥗 Случайный рецепт</h1>
+
+        <div class="recipe-page__controls">
+            <button class="recipe-page__button" id="loadRandomRecipeBtn">🎲 Случайный рецепт</button>
+            <button class="recipe-page__button" id="loadWeatherRecipeBtn">🌤️ Рецепт по погоде</button>
+        </div>
+
+        <section id="recipeContainer" class="recipe-page__card"></section>
+        <section id="weatherContainer" class="recipe-page__card"></section>
+    </main>
+
+    <script type="module" src="./js/recipe.js"></script>
+</body>
+
+</html>
