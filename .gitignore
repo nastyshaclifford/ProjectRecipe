@@ -7,3 +7,7 @@ Thumbs.db
 .vscode/
 
 node_modules/
+
+!scss/main.css
+scss/*.css
+scss/*.css.map
