@@ -177,7 +177,7 @@ body {
 }
 .recipe-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 .recipe-card .recipe-img {
   height: 200px;
@@ -240,4 +240,134 @@ body {
 
 .error {
   color: #d32f2f;
-}/*# sourceMappingURL=main.css.map */
+}
+
+.account {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+.account__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.account__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.account__name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+.account__logout {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.account__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.account__options-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.account__options-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.account__options-link:hover {
+  text-decoration: underline;
+}
+
+.todo__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo__list .todo__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+.todo__list .todo__item:hover {
+  background-color: #f9f9f9;
+}
+.todo__list .todo__item.done .todo__text {
+  text-decoration: line-through;
+  color: #aaa;
+}
+.todo__list .todo__label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-grow: 1;
+  cursor: pointer;
+}
+.todo__list .todo__checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #58dd93;
+  cursor: pointer;
+}
+.todo__list .todo__text {
+  font-size: 1rem;
+  color: #333;
+  word-break: break-word;
+}
+.todo__list .todo__delete {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #ff4d4d;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.todo__list .todo__delete:hover {
+  color: #ff0000;
+}
+
+@media (max-width: 600px) {
+  .account {
+    padding: 1rem;
+  }
+  .account__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .account__logout {
+    margin-left: 0;
+  }
+  .account__options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .todo__form {
+    flex-direction: column;
+  }
+  .todo__add-button {
+    width: 100%;
+  }
+}

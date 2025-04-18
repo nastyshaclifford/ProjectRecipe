@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аккаунт</title>
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <div id="header"></div>
+
+  <section class="account">
+    <header class="account__header">
+      <!--  <img src="https://via.placeholder.com/80" alt="Аватар" class="account__avatar" />-->
+
+      <h1 class="account__name">Анна Иванова</h1>
+      <button class="account__logout">Выйти</button>
+    </header>
+
+    <div class="account__options">
+      <label class="account__checkbox-label">
+        <input type="checkbox" class="account__checkbox" id="extraOptions" />
+        Дополнительные опции доступны
+      </label>
+      <a href="favorites.html" class="account__favorites-link">Избранное</a>
+    </div>
+
+    <div class="account__todo todo">
+      <h2 class="todo__title">ToDo список</h2>
+      <form class="todo__form">
+        <input type="text" class="todo__input" placeholder="Новая задача" />
+        <button type="submit" class="todo__add-button">Добавить</button>
+      </form>
+      <ul class="todo__list"></ul>
+
+      
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="./js/account.js"></script>
+
+</body>
+</html>
