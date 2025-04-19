@@ -572,7 +572,7 @@ body {
 }
 .recipe-page__header {
   position: absolute;
-  top: 20px;
+  top: 100px;
   left: 20px;
 }
 .recipe-page__back-button {
