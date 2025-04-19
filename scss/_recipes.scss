@@ -1,0 +1,52 @@
+body{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #43A047;
+}
+#recipes-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+  /* Карточка одного рецепта */
+.recipe-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  /* При наведении на карточку */
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+  /* Заголовок */
+.recipe-card h3 {
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis;
+    padding-left: 15px;
+}
+  /* Картинка рецепта */
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+  /* Описание */
+.recipe-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 0 16px 16px 16px;
+}

@@ -72,18 +72,22 @@ body {
 .ingredients-search {
   display: flex;
   justify-content: center;
+  align-items: center;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
 }
 
 .ingredients-search input {
   padding: 15px;
   border: none;
   border-radius: 5px 0 0 5px;
-  width: 70%;
+  width: 100%;
   font-size: 1rem;
 }
-
+form {
+  position: relative;
+}
 .ingredients-search button {
   padding: 15px 25px;
   background-color: #43A047;
@@ -98,6 +102,29 @@ body {
 .ingredients-search button:hover {
   background-color: #66BB6A;
 }
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  position: absolute;
+  top: 100%; /* Сразу под input */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+  color: #333;
+}
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
 .recipes-section {
   padding: 60px 0;
   background-color: #fff;

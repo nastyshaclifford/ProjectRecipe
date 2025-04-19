@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .hidden {
   display: none;
 }
@@ -126,6 +127,7 @@ body {
   margin: 0 auto;
   position: relative;
 }
+
 .ingredients-search input {
   padding: 15px;
   border: none;
@@ -133,11 +135,13 @@ body {
   width: 100%;
   font-size: 1rem;
 }
+
 form {
   position: relative;
 }
+
 .ingredients-search button {
-  padding: 15px 15px;
+  padding: 15px 25px;
   background-color: #43A047;
   color: white;
   border: none;
@@ -146,9 +150,11 @@ form {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
+
 .ingredients-search button:hover {
   background-color: #66BB6A;
 }
+
 .suggestions-list {
   list-style: none;
   margin: 0;
@@ -158,19 +164,22 @@ form {
   overflow-y: auto;
   background: white;
   position: absolute;
-  top: 100%; 
+  top: 100%; /* Сразу под input */
   left: 0;
   right: 0;
   z-index: 1000;
 }
+
 .suggestions-list li {
   padding: 10px;
   cursor: pointer;
   color: #333;
 }
+
 .suggestions-list li:hover {
   background-color: #f0f0f0;
 }
+
 .recipes-section {
   padding: 60px 0;
   background-color: #fff;
@@ -480,3 +489,63 @@ form {
     transform: translateY(0);
   }
 }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #43A047;
+}
+
+#recipes-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Карточка одного рецепта */
+.recipe-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* При наведении на карточку */
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Заголовок */
+.recipe-card h3 {
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 15px;
+}
+
+/* Картинка рецепта */
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Описание */
+.recipe-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 0 16px 16px 16px;
+}/*# sourceMappingURL=main.css.map */
