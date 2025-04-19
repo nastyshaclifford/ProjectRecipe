@@ -20,7 +20,10 @@
                 <h1>Откройте для себя новые рецепты</h1>
                 <p>Найдите идеальный рецепт на основе ваших ингредиентов</p>
                 <div class="ingredients-search">
-                    <input type="text" id="ingredients-input" placeholder="Введите ингредиенты...">
+                    <form autocomplete="off" action=""> 
+                        <input type="text" id="ingredients-input" class="ingredients-input" placeholder="Введите ингредиенты...">   
+                        <ul id="ingredient-suggestions" class="suggestions-list"></ul>
+                    </form> 
                     <button id="find-by-ingredients-btn">Найти рецепты</button>
                 </div>
             </div>
