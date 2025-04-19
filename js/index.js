@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Подключение header
+  fetch("./components/header.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("header").innerHTML = data;
+    });
+
+  // Подключение footer
+  fetch("./components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+
     const input = document.getElementById('ingredients-input');
     const findBtn = document.getElementById('find-by-ingredients-btn');
     const suggestionsList = document.getElementById('ingredient-suggestions');
@@ -54,9 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const query = encodeURIComponent(selectedIngredients.join(","));
         window.location.href = `recipes.html?ingredients=${query}`;
-    });});
+    });
 
-document.addEventListener('DOMContentLoaded', function() {
     const API_KEY = 'd5693c13e955483fbeaab9c3dfb26bd7'; 
     const recipesContainer = document.querySelector('.recipes-grid');
     
