@@ -1,125 +1,119 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Подключение header
-  fetch("./components/header.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("header").innerHTML = data;
-    });
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const [headerHTML, footerHTML] = await Promise.all([
+            fetch('./components/header.html').then(r => r.ok ? r.text() : Promise.reject(r.status)),
+            fetch('./components/footer.html').then(r => r.ok ? r.text() : Promise.reject(r.status))
+        ]);
 
-  // Подключение footer
-  fetch("./components/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("footer").innerHTML = data;
-    });
+        document.getElementById('header').innerHTML = headerHTML;
+        document.getElementById('footer').innerHTML = footerHTML;
+    } catch (err) {
+        console.log('ошибка');
+    }
 
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav');
+    if (burger && nav) {
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    }
 
     const input = document.getElementById('ingredients-input');
     const findBtn = document.getElementById('find-by-ingredients-btn');
     const suggestionsList = document.getElementById('ingredient-suggestions');
-    let selectedIngredients = [];
-    const apiKey = '38e779a68fe4449390ee43137602db00';
-    let debounceTimer;
-    input.addEventListener('input', function() {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(async () => {
-            const value = input.value.trim();
-        if (value.length === 0) {
-            suggestionsList.innerHTML = '';
-            return;
-        }
-        try {
-            const response = await fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${encodeURIComponent(value)}&number=5&apiKey=${apiKey}`);
-            if (!response.ok) {
-                throw new Error('Ошибка запроса: ' + response.status);
-            }
-            const data = await response.json();
-            suggestionsList.innerHTML = '';
-            data.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item.name; 
-                li.classList.add('suggestion-item');
-                li.addEventListener('click', () => {
-                    input.value = item.name;
+    if (input && findBtn && suggestionsList) {
+        const apiKey = '38e779a68fe4449390ee43137602db00';
+        let debounceTimer = null;
+
+        input.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(async () => {
+                const q = input.value.trim();
+                if (!q) {
                     suggestionsList.innerHTML = '';
-                });
-                suggestionsList.appendChild(li);
-            });
-            } catch (error) {
-                console.error('Произошла ошибка при запросе к API:', error);
+                    return;
+                }
+                try {
+                    const resp = await fetch(
+                        `https://api.spoonacular.com/food/ingredients/autocomplete?` +
+                        `query=${encodeURIComponent(q)}&number=5&apiKey=${apiKey}`
+                    );
+                    if (!resp.ok) throw new Error(resp.status);
+                    const data = await resp.json();
+                    suggestionsList.innerHTML = data
+                        .map(item => `<li class="suggestion-item">${item.name}</li>`)
+                        .join('');
+                    suggestionsList.querySelectorAll('.suggestion-item')
+                        .forEach(li => {
+                            li.addEventListener('click', () => {
+                                input.value = li.textContent;
+                                suggestionsList.innerHTML = '';
+                            });
+                        });
+                } catch (e) {
+                    console.error('Ошибка:', e);
+                }
+            }, 300);
+        });
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.ingredients-search')) {
+                suggestionsList.innerHTML = '';
             }
-        }, 300);});
-//клик
-    document.addEventListener("click", (e) => {
-        if (!e.target.closest(".ingredients-search")) {
-            suggestionsList.innerHTML = '';
-        }
-    });
-    // Переход на страницу с рецептами
-    findBtn.addEventListener("click", () => {
-        let inputValue = input.value.trim();
-        if (inputValue) {
-            selectedIngredients = inputValue.split(',').map(item => item.trim()).filter(Boolean);
-        }
+        });
 
-        if (selectedIngredients.length === 0) {
-            alert("Пожалуйста, введите хотя бы один ингредиент.");
-        return;
-        }
-
-        const query = encodeURIComponent(selectedIngredients.join(","));
-        window.location.href = `recipes.html?ingredients=${query}`;
-    });
-
-    const API_KEY = 'd5693c13e955483fbeaab9c3dfb26bd7'; 
-    const recipesContainer = document.querySelector('.recipes-grid');
-    
-    if (!recipesContainer) {
-        console.error('Рецепты не найдены');
-        return;
-    }
-
-    recipesContainer.innerHTML = '<div class="loading">Загрузка рецептов...</div>';
-
-    fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=6`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка загрузки рецептов');
-            }
-            return response.json();
-        })
-        .then(data => {
-            recipesContainer.innerHTML = '';
-            
-            if (!data.recipes || data.recipes.length === 0) {
-                recipesContainer.innerHTML = '<div class="no-recipes">Рецепты не найдены</div>';
+        findBtn.addEventListener('click', () => {
+            const vals = input.value
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+            if (!vals.length) {
+                alert('Пожалуйста, введите хотя бы один ингредиент.');
                 return;
             }
-            data.recipes.forEach(recipe => {
-                const recipeCard = document.createElement('div');
-                recipeCard.className = 'recipe-card';
-                
-                recipeCard.innerHTML = `
-                    <div class="recipe-img">
-                        <img src="${recipe.image || 'https://via.placeholder.com/300x200?text=No+Image'}" alt="${recipe.title}">
-                    </div>
-                    <div class="recipe-info">
-                        <h3 class="recipe-title">${recipe.title || 'Без названия'}</h3>
-                        <div class="recipe-meta">
-                            <span>${recipe.readyInMinutes || '--'} мин</span>
-                            <span>${recipe.servings || '--'} порций</span>
-                        </div>
-                        <div class="recipe-actions">
-                            <button class="view-recipe">Посмотреть</button>
-                        </div>
-                    </div>
-                `;
-                
-                recipesContainer.appendChild(recipeCard);
-            });
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            recipesContainer.innerHTML = '<div class="error">Не удалось загрузить рецепты</div>';
+            const query = encodeURIComponent(vals.join(','));
+            window.location.href = `recipes.html?ingredients=${query}`;  
         });
+    }
+
+    const recipesContainer = document.querySelector('.recipes-grid');
+    if (recipesContainer) {
+        const API_KEY = 'd5693c13e955483fbeaab9c3dfb26bd7';
+        recipesContainer.innerHTML = '<div class="loading">Загрузка рецептов...</div>';
+
+        try {
+            const resp = await fetch(
+                `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=6`  
+            );
+            if (!resp.ok) throw new Error(resp.status);
+            const { recipes } = await resp.json();
+            recipesContainer.innerHTML = recipes.length
+                ? recipes.map(recipe => `
+                    <div class="recipe-card">
+                        <div class="recipe-img">
+                            <img src="${recipe.image ||
+                                'https://via.placeholder.com/300x200?text=No+Image'}"
+                                alt="${recipe.title || 'Без названия'}">
+                        </div>
+                        <div class="recipe-info">
+                            <h3 class="recipe-title">${recipe.title}</h3>
+                            <div class="recipe-meta">
+                                <span>${recipe.readyInMinutes || '--'} мин</span>
+                                <span>${recipe.servings || '--'} порций</span>
+                            </div>
+                            <div class="recipe-actions">
+                                <button class="view-recipe">Посмотреть</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')
+            : '<div class="no-recipes">Рецепты не найдены</div>';
+        } catch (e) {
+            console.error('Ошибка загрузки рецептов:', e);
+            recipesContainer.innerHTML = '<div class="error">Не удалось загрузить рецепты</div>';
+        }
+    }
 });
+
+

@@ -18,35 +18,6 @@ body {
   padding: 0 15px;
 }
 
-
-.search-box {
-  display: flex;
-  align-items: center;
-}
-
-.search-box input {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  width: 200px;
-  font-size: 0.9rem;
-}
-
-.search-box button {
-  padding: 10px 15px;
-  background-color: #43A047;
-  color: white;
-  border: none;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.search-box button:hover {
-  background-color: #66BB6A;
-}
-
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
               url("../assets/img_main.avif");
