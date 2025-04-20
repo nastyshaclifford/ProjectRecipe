@@ -684,11 +684,16 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
+.container__rec {
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
   color: #43A047;
+}
+
+.container__rec h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 5vw, 48px);
+  font-weight: 700;
+  margin: 20px 0;
 }
 
 #recipes-results {
@@ -700,7 +705,6 @@ body {
   margin: 0 auto;
 }
 
-/* Карточка одного рецепта */
 .recipe-card {
   background: #fff;
   border-radius: 12px;
@@ -709,13 +713,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* При наведении на карточку */
 .recipe-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Заголовок */
 .recipe-card h3 {
   font-size: 20px;
   text-align: center;
@@ -726,7 +728,6 @@ body {
   padding-left: 15px;
 }
 
-/* Картинка рецепта */
 .recipe-card img {
   width: 100%;
   height: 200px;
@@ -734,7 +735,6 @@ body {
      object-fit: cover;
 }
 
-/* Описание */
 .recipe-card p {
   font-size: 14px;
   color: #666;
