@@ -108,3 +108,18 @@ btnWeatherRecipe.addEventListener('click', async () => {
         weatherContainer.innerHTML = '<div class="card">Не удалось получить местоположение.</div>';
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('./components/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  
+    fetch('./components/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  });
+  

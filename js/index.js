@@ -1,4 +1,76 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+  // Подключение header
+  fetch("./components/header.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("header").innerHTML = data;
+    });
+
+  // Подключение footer
+  fetch("./components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+
+    const input = document.getElementById('ingredients-input');
+    const findBtn = document.getElementById('find-by-ingredients-btn');
+    const suggestionsList = document.getElementById('ingredient-suggestions');
+    let selectedIngredients = [];
+    const apiKey = '38e779a68fe4449390ee43137602db00';
+    let debounceTimer;
+    input.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(async () => {
+            const value = input.value.trim();
+        if (value.length === 0) {
+            suggestionsList.innerHTML = '';
+            return;
+        }
+        try {
+            const response = await fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${encodeURIComponent(value)}&number=5&apiKey=${apiKey}`);
+            if (!response.ok) {
+                throw new Error('Ошибка запроса: ' + response.status);
+            }
+            const data = await response.json();
+            suggestionsList.innerHTML = '';
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.name; 
+                li.classList.add('suggestion-item');
+                li.addEventListener('click', () => {
+                    input.value = item.name;
+                    suggestionsList.innerHTML = '';
+                });
+                suggestionsList.appendChild(li);
+            });
+            } catch (error) {
+                console.error('Произошла ошибка при запросе к API:', error);
+            }
+        }, 300);});
+//клик
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".ingredients-search")) {
+            suggestionsList.innerHTML = '';
+        }
+    });
+    // Переход на страницу с рецептами
+    findBtn.addEventListener("click", () => {
+        let inputValue = input.value.trim();
+        if (inputValue) {
+            selectedIngredients = inputValue.split(',').map(item => item.trim()).filter(Boolean);
+        }
+
+        if (selectedIngredients.length === 0) {
+            alert("Пожалуйста, введите хотя бы один ингредиент.");
+        return;
+        }
+
+        const query = encodeURIComponent(selectedIngredients.join(","));
+        window.location.href = `recipes.html?ingredients=${query}`;
+    });
+
     const API_KEY = 'd5693c13e955483fbeaab9c3dfb26bd7'; 
     const recipesContainer = document.querySelector('.recipes-grid');
     

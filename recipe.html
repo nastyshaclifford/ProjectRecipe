@@ -9,9 +9,11 @@
 </head>
 
 <body class="recipe-page">
-    <header class="recipe-page__header">
+    <div id="header"></div>
+    
+    <div class="recipe-page__header">
         <button class="recipe-page__back-button" onclick="window.history.back()">✖ Назад</button>
-    </header>
+    </div>
 
     <main class="recipe-page__main">
         <h1 class="recipe-page__title">🥗 Случайный рецепт</h1>
@@ -24,7 +26,7 @@
         <section id="recipeContainer" class="recipe-page__card"></section>
         <section id="weatherContainer" class="recipe-page__card"></section>
     </main>
-
+    <div id="footer"></div>
     <script type="module" src="./js/recipe.js"></script>
 </body>
 

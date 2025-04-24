@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Авторизация</title>
+    <link rel="stylesheet" href="scss/main.css" />
+</head>
+<body>
+    <div class="modal-overlay" id="overlay"></div>
+    <div class="modal" id="authModal">
+        <h2>Авторизация</h2>
+        <input type="text" id="username" placeholder="Логин">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="authenticate()">Войти</button>
+    </div>
+    <script src="./js/authorization.js"></script>
+</body>
+</html>

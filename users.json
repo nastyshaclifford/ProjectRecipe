@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "username": "anna",
+      "name": "Анна Шнайдер",
+      "extraOptions": true,
+      "todo": [
+        { "text": "Посадить морковь", "done": false },
+        { "text": "Сделать домашку", "done": true }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "masha",
+      "name": "Мария Петрова",
+      "extraOptions": false,
+      "todo": [
+        { "text": "Проверить почту", "done": false }
+      ]
+    }
+  ]
+  
