@@ -87,6 +87,15 @@
         p {
             font-size: 1.1rem;
         }
+        #heart {
+            color: white;
+            border: none;
+            background-color: initial;
+
+            &.favorite {
+                color: red;
+            }
+        }
     }
 }
 

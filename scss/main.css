@@ -211,7 +211,16 @@ body {
 }
 .recipe-card .recipe-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+.recipe-card .recipe-actions #heart {
+  color: white;
+  border: none;
+  background-color: initial;
+}
+.recipe-card .recipe-actions #heart.favorite {
+  color: red;
 }
 
 .view-recipe {
@@ -240,6 +249,13 @@ body {
 
 .error {
   color: #d32f2f;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .account {
@@ -428,6 +444,15 @@ body {
     width: 100%;
   }
 }
+
+.returnButton {
+  color: rgb(255, 127, 240);
+  border: none;
+  background-color: rgb(255, 255, 253);
+  margin-left: 200px;
+}
+
+
 .account__body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -562,6 +587,7 @@ body {
     opacity: 0;
   }
 }
+
 .recipe-page {
   font-family: "Segoe UI", sans-serif;
   background: linear-gradient(to right, #fff0f5, #ffe4e9);
@@ -641,14 +667,24 @@ body {
 .recipe-page__card p {
   font-size: 1.1rem;
 }
+.recipe-page__card #heart {
+  color: white;
+  border: none;
+  background-color: initial;
+}
+.recipe-page__card #heart.favorite {
+  color: red;
+}
 
 @keyframes fadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-/* Стиль для модального окна */
+
+}/*# sourceMappingURL=main.css.map */
+
+
 .modal {
   display: none;
   position: fixed;
@@ -690,3 +726,4 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
