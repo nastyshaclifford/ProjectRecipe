@@ -1,21 +1,7 @@
-h1 {
-    margin-left: 700px;
+.returnButton {
+    color: rgb(255, 127, 240);
+    border: none;
+    background-color: rgb(255, 255, 253);
+    margin-left: 200px;
 }
 
-#favorites-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    list-style-type: none;
-    padding: 0;
-}
-
-#favorites-list li {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: calc(33% - 20px); /* 3 карточки в ряд с учетом отступов */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}

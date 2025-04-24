@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./scss/_favorites.scss">
-    <link rel="stylesheet" href="./js/favorites.js">
+    <link rel="stylesheet" href="scss/main.css"/>
     <title>Избранное</title>
 </head>
 <style>
@@ -13,10 +12,16 @@
 }
 </style>
 <body>
-    <h1>Избранные рецепты</h1>
-    <ul id="favorites-list"></ul>
-    
-
-
+    <main class="main">
+        <section class="recipes-section">
+            <button class ="returnButton" onclick="window.history.back()">✖ Назад</button>
+            <div class="container">
+                <h2 id="recipes-title">Избранные рецепты</h2>
+                <div class="recipes-grid" id="favoritesList">
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./js/favorites.js"></script>
 </body>
 </html>
