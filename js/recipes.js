@@ -39,11 +39,13 @@
 
       const params = new URLSearchParams(window.location.search);
       const ingredients = params.get("ingredients");  // Получаем список ингредиентов
+      if (!ingredients) {
+        alert("Не переданы ингредиенты в URL!");
+        return;
+      } // Получаем список ингредиентов
       const apiKey = "38e779a68fe4449390ee43137602db00"; 
-      
-      // Проверяем, есть ли несколько ингредиентов, и если есть, формируем строку с разделёнными запятой значениями
+    
       const ingredientList = ingredients.split(',').map(ingredient => ingredient.trim()).join(',');
-
       
       fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientList}&number=10&apiKey=${apiKey}`)
       .then(res => res.json())
@@ -64,4 +66,9 @@
           `;
           container.appendChild(card);
         });
+      })
+      .catch(error => {
+        console.error('Ошибка при запросе данных:', error);
+        const container = document.getElementById("recipes-results");
+        container.innerHTML = "<p>Произошла ошибка при загрузке данных.</p>";
       });
