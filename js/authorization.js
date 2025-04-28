@@ -21,3 +21,17 @@
                 alert('Неверный логин или пароль. Попробуйте еще раз.');
             }
         }
+        // Подключение header
+  fetch("./components/header.html")
+  .then((response) => response.text())
+  .then((data) => {
+    document.getElementById("header").innerHTML = data;
+  });
+
+// Подключение footer
+fetch("./components/footer.html")
+  .then((response) => response.text())
+  .then((data) => {
+    document.getElementById("footer").innerHTML = data;
+  });
+
