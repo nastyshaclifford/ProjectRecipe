@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/main.css"/>
+    <title>Избранное</title>
+</head>
+<style>
+    h1 {
+    margin-left: 700px;
+}
+</style>
+<body>
+    <div id="header"></div>
+    <main class="main">
+        <section class="recipes-section">
+            <button class ="returnButton" onclick="window.history.back()">✖ Назад</button>
+            <div class="container">
+                <h2 id="recipes-title">Избранные рецепты</h2>
+                <div class="recipes-grid" id="favoritesList">
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+    <script src="./js/favorites.js"></script>
+    
+</body>
+</html>
