@@ -122,11 +122,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     fetch("./components/header.html")
-      .then((res) => res.text())
-      .then((data) => {
-        const header = document.getElementById("header");
-        if (header) header.innerHTML = data;
-      });
+    .then((response) => response.text())
+    .then((data) => {
+      const header = document.getElementById("header");
+      if (header) {
+        header.innerHTML = data;
+
+        // Подсветка
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+        header.querySelectorAll("nav a").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href && href.endsWith(currentPage)) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
   
     fetch("./components/footer.html")
       .then((res) => res.text())
