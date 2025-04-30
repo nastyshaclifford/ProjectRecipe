@@ -1,17 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Подключение header
-  fetch("./components/header.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("header").innerHTML = data;
-    });
+        if (!document.querySelector(".page-wrapper")) {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("page-wrapper");
+      
+          while (document.body.firstChild) {
+            wrapper.appendChild(document.body.firstChild);
+          } 
+          document.body.appendChild(wrapper);
+        }
+      
+        fetch("./components/header.html")
+          .then((res) => res.text())
+          .then((data) => {
+            const header = document.getElementById("header");
+            if (header) header.innerHTML = data;
+          });
+      
+        fetch("./components/footer.html")
+          .then((res) => res.text())
+          .then((data) => {
+            const footer = document.getElementById("footer");
+            if (footer) footer.innerHTML = data;
+          });
 
-  // Подключение footer
-  fetch("./components/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("footer").innerHTML = data;
-    });
+      
 
 
     const input = document.getElementById('ingredients-input');

@@ -110,16 +110,30 @@ btnWeatherRecipe.addEventListener('click', async () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('./components/header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
+    if (!document.querySelector(".page-wrapper")) {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("page-wrapper");
+  
+      while (document.body.firstChild) {
+        wrapper.appendChild(document.body.firstChild);
+      }
+  
+      document.body.appendChild(wrapper);
+    }
+  
+    fetch("./components/header.html")
+      .then((res) => res.text())
+      .then((data) => {
+        const header = document.getElementById("header");
+        if (header) header.innerHTML = data;
       });
   
-    fetch('./components/footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
+    fetch("./components/footer.html")
+      .then((res) => res.text())
+      .then((data) => {
+        const footer = document.getElementById("footer");
+        if (footer) footer.innerHTML = data;
       });
   });
+  
   
